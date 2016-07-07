@@ -35,7 +35,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </head>
 <body>
 <header>
-    Ceci est un header !
 </header>
     <nav class="top-bar expanded" data-topbar role="navigation">
         <ul class="title-area large-3 medium-4 columns">
@@ -55,7 +54,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <?= $this->fetch('content') ?>
     </div>
     <footer>
-        Ceci est un footer !
     </footer>
 </body>
 </html>
