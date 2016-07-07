@@ -43,6 +43,27 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+
+        $this->loadComponent('Auth', [
+            'authorize' => ['Controller'],
+            'loginRedirect' => [
+                'controller' => 'Users',
+                'action' => 'index'
+            ],
+            'logoutRedirect' => [
+                'Controller' => 'Users',
+                'action' => 'index',
+                'home'
+            ]
+        ]);
+    }
+
+    public function isAuthorized ($user) {
+        if (isset($user['admin']) && $user['admin'] === true) {
+            return true;
+        }
+        //default deny
+        return false;
     }
 
     /**
@@ -58,5 +79,11 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+    }
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->Auth->allow(['add']);
+        $this->Auth->allow(['add', 'logout']);
     }
 }
