@@ -25,7 +25,11 @@ class IdentitiesTableTest extends TestCase
      */
     public $fixtures = [
         'app.identities',
-        'app.regions'
+        'app.regions',
+        'app.accompaniments',
+        'app.course_types',
+        'app.indicators',
+        'app.prepared_jobs'
     ];
 
     /**

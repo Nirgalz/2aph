@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `accompaniments` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `region_id` int(11) NOT NULL,
   `upstream` text NOT NULL,
   `while` text NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `accompaniments` (
 --
 
 CREATE TABLE IF NOT EXISTS `articles` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `created` datetime NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
 --
 
 CREATE TABLE IF NOT EXISTS `course_types` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `region_id` int(11) NOT NULL,
   `content` text NOT NULL,
   PRIMARY KEY (`id`)
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `course_types` (
 --
 
 CREATE TABLE IF NOT EXISTS `identities` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `region_id` int(11) NOT NULL,
   `creation_date` datetime NOT NULL,
   `management_body` text NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `identities` (
 --
 
 CREATE TABLE IF NOT EXISTS `indicators` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `region_id` int(11) NOT NULL,
   `results` text NOT NULL,
   `strong_points` text NOT NULL,
@@ -106,21 +106,6 @@ CREATE TABLE IF NOT EXISTS `indicators` (
 -- Table structure for table `phinxlog`
 --
 
-CREATE TABLE IF NOT EXISTS `phinxlog` (
-  `version` bigint(20) NOT NULL,
-  `migration_name` varchar(100) DEFAULT NULL,
-  `start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `phinxlog`
---
-
-INSERT INTO `phinxlog` (`version`, `migration_name`, `start_time`, `end_time`) VALUES
-(20160706140808, 'CreateUsers', '2016-07-06 12:09:02', '2016-07-06 12:09:02');
-
 -- --------------------------------------------------------
 
 --
@@ -128,7 +113,7 @@ INSERT INTO `phinxlog` (`version`, `migration_name`, `start_time`, `end_time`) V
 --
 
 CREATE TABLE IF NOT EXISTS `prepared_jobs` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `region_id` int(11) NOT NULL,
   `frequent_jobs` text NOT NULL,
   `others` text NOT NULL,
@@ -142,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `prepared_jobs` (
 --
 
 CREATE TABLE IF NOT EXISTS `regions` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
   `street` varchar(255) NOT NULL,

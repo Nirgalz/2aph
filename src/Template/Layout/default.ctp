@@ -35,7 +35,17 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </head>
 <body>
 <header>
+    <h1><title>Réseau national pour la promotion de l’apprentissage adapté des personnes en situation de handicap</title>
+    </h1>
+    <nav>
+        <ul class="header">
+        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Regions'), ['controller' => 'Regions', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('List Articles'), ['controller' => 'Articles', 'action' => 'index']) ?></li>
+        </ul>
+    </nav>
 </header>
+
     <nav class="top-bar expanded" data-topbar role="navigation">
         <ul class="title-area large-3 medium-4 columns">
             <li class="name">

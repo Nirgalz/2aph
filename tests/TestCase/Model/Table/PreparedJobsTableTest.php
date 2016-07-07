@@ -25,7 +25,11 @@ class PreparedJobsTableTest extends TestCase
      */
     public $fixtures = [
         'app.prepared_jobs',
-        'app.regions'
+        'app.regions',
+        'app.accompaniments',
+        'app.course_types',
+        'app.identities',
+        'app.indicators'
     ];
 
     /**

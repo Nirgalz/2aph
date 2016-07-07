@@ -25,7 +25,11 @@ class IndicatorsTableTest extends TestCase
      */
     public $fixtures = [
         'app.indicators',
-        'app.regions'
+        'app.regions',
+        'app.accompaniments',
+        'app.course_types',
+        'app.identities',
+        'app.prepared_jobs'
     ];
 
     /**

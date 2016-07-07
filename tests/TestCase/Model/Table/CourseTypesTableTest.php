@@ -25,7 +25,11 @@ class CourseTypesTableTest extends TestCase
      */
     public $fixtures = [
         'app.course_types',
-        'app.regions'
+        'app.regions',
+        'app.accompaniments',
+        'app.identities',
+        'app.indicators',
+        'app.prepared_jobs'
     ];
 
     /**

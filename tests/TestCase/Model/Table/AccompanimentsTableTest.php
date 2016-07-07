@@ -25,7 +25,11 @@ class AccompanimentsTableTest extends TestCase
      */
     public $fixtures = [
         'app.accompaniments',
-        'app.regions'
+        'app.regions',
+        'app.course_types',
+        'app.identities',
+        'app.indicators',
+        'app.prepared_jobs'
     ];
 
     /**
