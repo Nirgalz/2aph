@@ -18,7 +18,7 @@
             echo $this->Form->input('name');
             echo $this->Form->input('content');
             echo $this->Form->input('forum_id', ['options' => $forums]);
-            echo $this->Form->input('user_id', ['options' => $users]);
+            echo $this->Form->hidden('user_id', array('value'=>$authUser['id']));
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

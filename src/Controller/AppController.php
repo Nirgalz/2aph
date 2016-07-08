@@ -85,5 +85,6 @@ class AppController extends Controller
         parent::beforeFilter($event);
         $this->Auth->allow(['add']);
         $this->Auth->allow(['add', 'logout']);
+        $this->set('authUser', $this->Auth->user());
     }
 }
