@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 06, 2016 at 04:30 PM
+-- Generation Time: Jul 08, 2016 at 03:59 PM
 -- Server version: 5.5.49-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.17
 
@@ -23,21 +23,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `accompaniments`
---
-
-CREATE TABLE IF NOT EXISTS `accompaniments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `region_id` int(11) NOT NULL,
-  `upstream` text NOT NULL,
-  `while` text NOT NULL,
-  `downstream` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `articles`
 --
 
@@ -49,56 +34,36 @@ CREATE TABLE IF NOT EXISTS `articles` (
   `modified` datetime NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `articles`
+--
+
+INSERT INTO `articles` (`id`, `title`, `content`, `created`, `modified`, `user_id`) VALUES
+(1, 'Ceci est un article', 'possédant un contenu', '2016-07-07 12:46:40', '2016-07-07 12:46:40', 3),
+(2, 'ceci est un deuxième article', 'avec un autre contenu', '2016-07-07 12:46:55', '2016-07-07 12:46:55', 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `course_types`
+-- Table structure for table `forums`
 --
 
-CREATE TABLE IF NOT EXISTS `course_types` (
+CREATE TABLE IF NOT EXISTS `forums` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `region_id` int(11) NOT NULL,
-  `content` text NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `created` date NOT NULL,
+  `modified` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Table structure for table `identities`
+-- Dumping data for table `forums`
 --
 
-CREATE TABLE IF NOT EXISTS `identities` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `region_id` int(11) NOT NULL,
-  `creation_date` datetime NOT NULL,
-  `management_body` text NOT NULL,
-  `financing` text NOT NULL,
-  `intervention_zone` text NOT NULL,
-  `youngs_number` text NOT NULL,
-  `handicap_situation` text NOT NULL,
-  `provenance` text NOT NULL,
-  `team` text NOT NULL,
-  `modified` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `indicators`
---
-
-CREATE TABLE IF NOT EXISTS `indicators` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `region_id` int(11) NOT NULL,
-  `results` text NOT NULL,
-  `strong_points` text NOT NULL,
-  `difficulties` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `forums` (`id`, `name`, `created`, `modified`) VALUES
+(1, 'General Discussion', '2013-12-06', '2013-12-06');
 
 -- --------------------------------------------------------
 
@@ -106,19 +71,44 @@ CREATE TABLE IF NOT EXISTS `indicators` (
 -- Table structure for table `phinxlog`
 --
 
+CREATE TABLE IF NOT EXISTS `phinxlog` (
+  `version` bigint(20) NOT NULL,
+  `migration_name` varchar(100) DEFAULT NULL,
+  `start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `phinxlog`
+--
+
+INSERT INTO `phinxlog` (`version`, `migration_name`, `start_time`, `end_time`) VALUES
+(20160706140808, 'CreateUsers', '2016-07-06 12:09:02', '2016-07-06 12:09:02');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prepared_jobs`
+-- Table structure for table `posts`
 --
 
-CREATE TABLE IF NOT EXISTS `prepared_jobs` (
+CREATE TABLE IF NOT EXISTS `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `region_id` int(11) NOT NULL,
-  `frequent_jobs` text NOT NULL,
-  `others` text NOT NULL,
+  `topic_id` int(11) NOT NULL,
+  `forum_id` int(11) NOT NULL,
+  `created` date NOT NULL,
+  `modified` date NOT NULL,
+  `content` text NOT NULL,
+  `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `topic_id`, `forum_id`, `created`, `modified`, `content`, `user_id`) VALUES
+(1, 1, 1, '2013-12-10', '2013-12-10', 'Test1', 1);
 
 -- --------------------------------------------------------
 
@@ -139,8 +129,40 @@ CREATE TABLE IF NOT EXISTS `regions` (
   `responsible_phone` varchar(255) NOT NULL,
   `responsible_email` varchar(255) NOT NULL,
   `management_body` text NOT NULL,
+  `description` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `regions`
+--
+
+INSERT INTO `regions` (`id`, `name`, `type`, `street`, `city`, `zip_code`, `website`, `direction`, `responsible_name`, `responsible_phone`, `responsible_email`, `management_body`, `description`) VALUES
+(1, 'lorraine', 'aide standard', 'rue du camembert', 'epinal', 88000, 'http://book.cakephp.org/', 'le directeur', 'andré dupoirier', '49593458', 'a.poire@poirier.fr', 'cet organisme', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `topics`
+--
+
+CREATE TABLE IF NOT EXISTS `topics` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) NOT NULL,
+  `content` text NOT NULL,
+  `created` date NOT NULL,
+  `modified` date NOT NULL,
+  `forum_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `topics`
+--
+
+INSERT INTO `topics` (`id`, `name`, `content`, `created`, `modified`, `forum_id`, `user_id`) VALUES
+(1, 'Test', 'Test Topic', '2013-12-06', '2013-12-06', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -151,13 +173,23 @@ CREATE TABLE IF NOT EXISTS `regions` (
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `admin` tinyint(1) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQUE_USERNAME` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `admin`, `created`, `modified`) VALUES
+(2, 'admin', NULL, '$2y$10$L4NiBYoDAvImFbirKKBJiekCYvgYAOYqcw5de9UEYNN3Gb2pLqNXW', 1, '2016-07-07 08:28:40', '2016-07-07 08:28:40'),
+(3, 'test', NULL, '$2y$10$iQ46d6/tdWog7Kv7W6QN9OiRqgcvpSXjBRVRzRgNJB0RO3p1jEU5W', 0, '2016-07-07 08:41:22', '2016-07-07 08:41:22'),
+(4, 'caker', 'caker@gmail.com', '080a38b5f8259776ec5ca984488af588d063932a', 0, '2013-12-06 00:00:00', '2013-12-06 00:00:00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

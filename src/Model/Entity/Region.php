@@ -18,6 +18,7 @@ use Cake\ORM\Entity;
  * @property string $responsible_phone
  * @property string $responsible_email
  * @property string $management_body
+ * @property string $description
  *
  * @property \App\Model\Entity\Accompaniment[] $accompaniments
  * @property \App\Model\Entity\CourseType[] $course_types

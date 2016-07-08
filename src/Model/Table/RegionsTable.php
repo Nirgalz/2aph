@@ -9,12 +9,6 @@ use Cake\Validation\Validator;
 /**
  * Regions Model
  *
- * @property \Cake\ORM\Association\HasMany $Accompaniments
- * @property \Cake\ORM\Association\HasMany $CourseTypes
- * @property \Cake\ORM\Association\HasMany $Identities
- * @property \Cake\ORM\Association\HasMany $Indicators
- * @property \Cake\ORM\Association\HasMany $PreparedJobs
- *
  * @method \App\Model\Entity\Region get($primaryKey, $options = [])
  * @method \App\Model\Entity\Region newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Region[] newEntities(array $data, array $options = [])
@@ -39,22 +33,6 @@ class RegionsTable extends Table
         $this->table('regions');
         $this->displayField('name');
         $this->primaryKey('id');
-
-        $this->hasMany('Accompaniments', [
-            'foreignKey' => 'region_id'
-        ]);
-        $this->hasMany('CourseTypes', [
-            'foreignKey' => 'region_id'
-        ]);
-        $this->hasMany('Identities', [
-            'foreignKey' => 'region_id'
-        ]);
-        $this->hasMany('Indicators', [
-            'foreignKey' => 'region_id'
-        ]);
-        $this->hasMany('PreparedJobs', [
-            'foreignKey' => 'region_id'
-        ]);
     }
 
     /**
@@ -113,6 +91,9 @@ class RegionsTable extends Table
         $validator
             ->requirePresence('management_body', 'create')
             ->notEmpty('management_body');
+
+        $validator
+            ->allowEmpty('description');
 
         return $validator;
     }

@@ -39,9 +39,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </h1>
     <nav>
         <ul class="header">
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Regions'), ['controller' => 'Regions', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('List Articles'), ['controller' => 'Articles', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('Regions'), ['controller' => 'Regions', 'action' => 'index']) ?> </li>
+            <li><?= $this->Html->link(__('Articles'), ['controller' => 'Articles', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('Forums'), ['controller' => 'Forums', 'action' => 'index']) ?></li>
         </ul>
     </nav>
 </header>

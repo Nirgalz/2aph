@@ -2,16 +2,6 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Region'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Accompaniments'), ['controller' => 'Accompaniments', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Accompaniment'), ['controller' => 'Accompaniments', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Course Types'), ['controller' => 'CourseTypes', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Course Type'), ['controller' => 'CourseTypes', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Identities'), ['controller' => 'Identities', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Identity'), ['controller' => 'Identities', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Indicators'), ['controller' => 'Indicators', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Indicator'), ['controller' => 'Indicators', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Prepared Jobs'), ['controller' => 'PreparedJobs', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Prepared Job'), ['controller' => 'PreparedJobs', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="regions index large-9 medium-8 columns content">
